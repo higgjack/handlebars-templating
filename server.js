@@ -8,7 +8,7 @@ var port = process.env.PORT || 8000
 var app = express()
 
 app.engine("handlebars",exphbs.engine({
-  defaultLayout:null
+  defaultLayout:"main"
 }))
 app.set("view engine","handlebars")
 
@@ -27,7 +27,8 @@ app.get('/people/:person', function (req, res, next) {
   if (personData) {
     res.render("photoPage",{
       name: personData.name,
-      photos: personData.photos
+      photos: personData.photos,
+      renderGreeting: false
     })
     // res.status(200).sendFile(
     //   __dirname + '/static/people/' + person + '.html'
